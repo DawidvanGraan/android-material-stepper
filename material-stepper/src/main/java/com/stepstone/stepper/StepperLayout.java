@@ -585,14 +585,49 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
         LayoutInflater.from(contextThemeWrapper).inflate(R.layout.ms_stepper_layout, this, true);
         bindViews();
 
-        mPager.setOnTouchListener(new View.OnTouchListener() {
+//        mPager.setOnTouchListener(new View.OnTouchListener() {
+//
+//            @SuppressLint("ClickableViewAccessibility")
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                return true;
+//            }
+//        });
 
-            @SuppressLint("ClickableViewAccessibility")
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                return true;
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Do Something like this to know if the page has been scrolled or not!
+//                Step step = findCurrentStep();
+//
+//                if (verifyCurrentStep(step)) {
+//                    invalidateCurrentPosition();
+//                    return;
+//                }
+//
+//                OnNextClickedCallback onNextClickedCallback = new OnNextClickedCallback();
+//                if (step instanceof BlockingStep) {
+//                    ((BlockingStep) step).onNextClicked(onNextClickedCallback);
+//                } else {
+//                    onNextClickedCallback.goToNextStep();
+//                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                // Update the pager at the bottom!
+
+                //mCurrentStepPosition++;
+                mCurrentStepPosition = position;
+                onUpdate(mCurrentStepPosition, true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
+
 
         initNavigation();
 
