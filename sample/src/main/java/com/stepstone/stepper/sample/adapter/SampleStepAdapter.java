@@ -36,6 +36,7 @@ public class SampleStepAdapter extends AbstractStepAdapter {
     public StepViewModel getViewModel(@IntRange(from = 0) int position) {
         return new StepViewModel.Builder(context)
                 .setTitle(R.string.tab_title)
+                .setShowBackButtonOnFirstStep(true)
                 .create();
     }
 

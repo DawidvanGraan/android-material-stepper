@@ -159,9 +159,7 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
         @UiThread
         public void goToPrevStep() {
             if (mCurrentStepPosition <= 0) {
-                if (mShowBackButtonOnFirstStep) {
-                    mListener.onReturn();
-                }
+                mListener.onReturn();
                 return;
             }
             mCurrentStepPosition--;
@@ -220,8 +218,6 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
     private String mNextButtonText;
 
     private String mCompleteButtonText;
-
-    private boolean mShowBackButtonOnFirstStep;
 
     private int mTypeIdentifier = AbstractStepperType.PROGRESS_BAR;
 
@@ -753,8 +749,6 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
                 mTabStepDividerWidth = a.getDimensionPixelOffset(R.styleable.StepperLayout_ms_tabStepDividerWidth, -1);
             }
 
-            mShowBackButtonOnFirstStep = a.getBoolean(R.styleable.StepperLayout_ms_showBackButtonOnFirstStep, false);
-
             mShowErrorStateEnabled = a.getBoolean(R.styleable.StepperLayout_ms_showErrorState, false);
             mShowErrorStateEnabled = a.getBoolean(R.styleable.StepperLayout_ms_showErrorStateEnabled, mShowErrorStateEnabled);
 
@@ -858,14 +852,17 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
 
     private void onUpdate(int newStepPosition, boolean userTriggeredChange) {
         mPager.setCurrentItem(newStepPosition);
+
+        final StepViewModel viewModel = mStepAdapter.getViewModel(newStepPosition);
+
         final boolean isLast = isLastPosition(newStepPosition);
         final boolean isFirst = newStepPosition == 0;
         AnimationUtil.fadeViewVisibility(mNextNavigationButton, isLast ? View.GONE : View.VISIBLE, userTriggeredChange);
         AnimationUtil.fadeViewVisibility(mCompleteNavigationButton, !isLast ? View.GONE : View.VISIBLE, userTriggeredChange);
-        int backButtonTargetVisibility = isFirst && !mShowBackButtonOnFirstStep ? View.GONE : View.VISIBLE;
+        int backButtonTargetVisibility = isFirst && !viewModel.getShowBackButtonOnFirstStep() ? View.GONE : View.VISIBLE;
         AnimationUtil.fadeViewVisibility(mBackNavigationButton, backButtonTargetVisibility, userTriggeredChange);
 
-        final StepViewModel viewModel = mStepAdapter.getViewModel(newStepPosition);
+
 
         updateBackButton(viewModel);
 

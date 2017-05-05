@@ -65,6 +65,8 @@ public class StepViewModel {
     @DrawableRes
     private int mBackButtonStartDrawableResId;
 
+    private boolean mShowBackButtonOnFirstStep;
+
     @Nullable
     public CharSequence getTitle() {
         return mTitle;
@@ -90,6 +92,10 @@ public class StepViewModel {
         return mBackButtonStartDrawableResId;
     }
 
+    public boolean getShowBackButtonOnFirstStep() {
+        return mShowBackButtonOnFirstStep;
+    }
+
     public static class Builder {
 
         @NonNull
@@ -109,6 +115,8 @@ public class StepViewModel {
 
         @DrawableRes
         private int mBackButtonStartDrawableResId = R.drawable.ms_ic_chevron_start;
+
+        private boolean mShowBackButtonOnFirstStep;
 
         /**
          * Creates a builder for the step info.
@@ -207,6 +215,11 @@ public class StepViewModel {
             return this;
         }
 
+        public Builder setShowBackButtonOnFirstStep(final boolean mShowBackButtonOnFirstStep) {
+            this.mShowBackButtonOnFirstStep = mShowBackButtonOnFirstStep;
+            return this;
+        }
+
         /**
          * Creates a {@link StepViewModel} with the arguments supplied to this
          * builder.
@@ -219,6 +232,7 @@ public class StepViewModel {
             viewModel.mNextButtonLabel = this.mNextButtonLabel;
             viewModel.mNextButtonEndDrawableResId = this.mNextButtonEndDrawableResId;
             viewModel.mBackButtonStartDrawableResId = this.mBackButtonStartDrawableResId;
+            viewModel.mShowBackButtonOnFirstStep = this.mShowBackButtonOnFirstStep;
             return viewModel;
         }
 
