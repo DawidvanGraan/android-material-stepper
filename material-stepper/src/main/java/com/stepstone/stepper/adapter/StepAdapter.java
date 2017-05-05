@@ -42,7 +42,7 @@ public interface StepAdapter {
      * @return the quantity of steps
      */
     @IntRange(from = 0)
-    int getCount();
+    int getStepCount();
 
     /**
      * Method for internal purpose. Should not be inherited.

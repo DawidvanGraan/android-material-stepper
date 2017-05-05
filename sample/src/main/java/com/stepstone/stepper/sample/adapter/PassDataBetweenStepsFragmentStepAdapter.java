@@ -31,4 +31,9 @@ public class PassDataBetweenStepsFragmentStepAdapter extends AbstractFragmentSte
     public int getCount() {
         return 2;
     }
+
+    @Override
+    public int getStepCount() {
+        return 2;
+    }
 }

@@ -36,6 +36,11 @@ public class CustomButtonsSampleFragmentStepAdapter extends AbstractFragmentStep
         return 3;
     }
 
+    @Override
+    public int getStepCount() {
+        return 3;
+    }
+
     @NonNull
     @Override
     public StepViewModel getViewModel(@IntRange(from = 0) int position) {
@@ -63,4 +68,5 @@ public class CustomButtonsSampleFragmentStepAdapter extends AbstractFragmentStep
         }
         return builder.create();
     }
+
 }

@@ -43,4 +43,9 @@ public class SampleFragmentStepAdapter extends AbstractFragmentStepAdapter {
     public int getCount() {
         return 3;
     }
+
+    @Override
+    public int getStepCount() {
+        return 3;
+    }
 }

@@ -34,4 +34,9 @@ public class DelayedTransitionFragmentStepAdapter extends AbstractFragmentStepAd
     public int getCount() {
         return 3;
     }
+
+    @Override
+    public int getStepCount() {
+        return 3;
+    }
 }

@@ -46,6 +46,11 @@ public class SampleStepAdapter extends AbstractStepAdapter {
     }
 
     @Override
+    public int getStepCount() {
+        return 3;
+    }
+
+    @Override
     public Step findStep(int position) {
         return pages.size() > 0 ? pages.get(position) : null;
     }

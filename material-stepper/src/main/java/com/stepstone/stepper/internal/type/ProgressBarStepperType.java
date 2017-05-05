@@ -61,8 +61,8 @@ public class ProgressBarStepperType extends AbstractStepperType {
     @Override
     public void onNewAdapter(@NonNull StepAdapter stepAdapter) {
         super.onNewAdapter(stepAdapter);
-        final int stepCount = stepAdapter.getCount();
-        mProgressBar.setMax(stepAdapter.getCount());
+        final int stepCount = stepAdapter.getStepCount();
+        mProgressBar.setMax(stepAdapter.getStepCount());
         mProgressBar.setVisibility(stepCount > 1 ? View.VISIBLE : View.GONE);
     }
 }

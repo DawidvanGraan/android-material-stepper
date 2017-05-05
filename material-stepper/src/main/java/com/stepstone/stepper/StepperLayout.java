@@ -132,7 +132,7 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
 
         @UiThread
         public void goToNextStep() {
-            final int totalStepCount = mStepAdapter.getCount();
+            final int totalStepCount = mStepAdapter.getStepCount();
 
             if (mCurrentStepPosition >= totalStepCount - 1) {
                 return;
@@ -783,7 +783,7 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
     }
 
     private boolean isLastPosition(int position) {
-        return position == mStepAdapter.getCount() - 1;
+        return position == mStepAdapter.getStepCount() - 1;
     }
 
     private Step findCurrentStep() {

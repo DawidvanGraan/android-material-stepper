@@ -77,7 +77,7 @@ public class TabsStepperType extends AbstractStepperType {
     public void onNewAdapter(@NonNull StepAdapter stepAdapter) {
         super.onNewAdapter(stepAdapter);
         List<CharSequence> titles = new ArrayList<>();
-        final int stepCount = stepAdapter.getCount();
+        final int stepCount = stepAdapter.getStepCount();
         for (int i = 0; i < stepCount; i++) {
             final StepViewModel stepViewModel = stepAdapter.getViewModel(i);
             titles.add(stepViewModel.getTitle());
